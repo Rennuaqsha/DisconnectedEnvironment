@@ -19,13 +19,15 @@ namespace Disconnected_Environment
         public Form2()
         {
             InitializeComponent();
-            koneksi = new SqlConnection();
+            koneksi = new SqlConnection(stringConnection);
             refreshfrom();
         }
         private void refreshfrom()
         {
             nmp.Text = "";
-            Enabled = false;
+            nmp.Enabled = false;
+            txtId.Text = "";
+            txtId.Enabled = false;
             btnSave.Enabled = false;
             btnClear.Enabled = false;
         }
@@ -43,7 +45,7 @@ namespace Disconnected_Environment
         private void dataGridView()
         {
             koneksi.Open();
-            string str = "Select nama_prodi from dbo.Prodi";
+            string str = "Select nama_prodi, id_prodi from dbo.Prodi";
             SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -58,12 +60,13 @@ namespace Disconnected_Environment
         private void btnOpen_Click(object sender, EventArgs e)
         {
             dataGridView();
-            btnOpen.Enabled = false;
+            btnOpen.Enabled = false ;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             nmp.Enabled = true;
+            txtId.Enabled = true;
             btnSave.Enabled = true;
             btnClear.Enabled = true;
         }
@@ -76,6 +79,7 @@ namespace Disconnected_Environment
         private void btnSave_Click(object sender, EventArgs e)
         {
             string nmProdi = nmp.Text;
+            string idProdi = txtId.Text;
 
             if (nmProdi == "")
             {
@@ -84,10 +88,12 @@ namespace Disconnected_Environment
             else
             {
                 koneksi.Open();
-                string str = "insert into dbo.prodi (nama_prodi)" + "values(@id)";
+                string str = "insert into dbo.prodi (nama_prodi, id_prodi)" + "values(@nm,@id)";
                 SqlCommand cmd = new SqlCommand(str, koneksi);
                 cmd.CommandType = CommandType.Text;
-                cmd.Parameters.Add(new SqlParameter("id", nmProdi));
+                cmd.Parameters.Add(new SqlParameter("id", idProdi));
+                cmd.Parameters.Add(new SqlParameter("nm", nmProdi));
+
                 cmd.ExecuteNonQuery();
 
                 koneksi.Close();
@@ -97,12 +103,12 @@ namespace Disconnected_Environment
 
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Form2_FormsClosed(object sender, FormClosedEventArgs e)
         {
-            Form1 hu = new Form1();
-            hu.Show();
+            Form1 f1 = new Form1();
+            f1.Show();
             this.Hide();
         }
+
     }
 }

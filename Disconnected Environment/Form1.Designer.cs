@@ -67,18 +67,21 @@
             this.dataProdiToolStripMenuItem.Name = "dataProdiToolStripMenuItem";
             this.dataProdiToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
             this.dataProdiToolStripMenuItem.Text = "Data Prodi";
+            this.dataProdiToolStripMenuItem.Click += new System.EventHandler(this.dataProdiToolStripMenuItem_Click);
             // 
             // dataMahasiswaToolStripMenuItem
             // 
             this.dataMahasiswaToolStripMenuItem.Name = "dataMahasiswaToolStripMenuItem";
             this.dataMahasiswaToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
             this.dataMahasiswaToolStripMenuItem.Text = "Data Mahasiswa";
+            this.dataMahasiswaToolStripMenuItem.Click += new System.EventHandler(this.dataMahasiswaToolStripMenuItem_Click);
             // 
             // dataStatusMahasiswaToolStripMenuItem
             // 
             this.dataStatusMahasiswaToolStripMenuItem.Name = "dataStatusMahasiswaToolStripMenuItem";
             this.dataStatusMahasiswaToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
             this.dataStatusMahasiswaToolStripMenuItem.Text = "Data Status Mahasiswa";
+            this.dataStatusMahasiswaToolStripMenuItem.Click += new System.EventHandler(this.dataStatusMahasiswaToolStripMenuItem_Click);
             // 
             // Form1
             // 

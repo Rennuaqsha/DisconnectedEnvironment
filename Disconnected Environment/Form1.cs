@@ -21,5 +21,26 @@ namespace Disconnected_Environment
         {
 
         }
+
+        private void dataProdiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 fm = new Form2();
+            fm.Show();
+            this.Hide();
+        }
+
+        private void dataMahasiswaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataMahasiswa fo = new DataMahasiswa();
+            fo.Show();
+            this.Hide();
+        }
+
+        private void dataStatusMahasiswaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 fr = new Form4();
+            fr.Show();
+            this.Hide();
+        }
     }
 }
